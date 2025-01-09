@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DatabaseManager {
-    private static final String url = "jdbc:mysql://localhost:3306/etterem"; // Replace 'localhost', '3306' and 'mydatabase' with your details
-    private static final String username = "username";  // Your MySQL username
-    private static final String password = "password";  // Your MySQL password
+    private static final String url = "jdbc:mysql://localhost:3306/etterem";
+    private static final String username = "username";
+    private static final String password = "password";
 
     private Connection createDatabaseConnection() {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
@@ -18,6 +18,11 @@ public class DatabaseManager {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void closeDatabaseConnection(Connection c, Statement s) throws SQLException {
+        c.close();
+        s.close();
     }
 
     public ArrayList<MenuItem> getMenuItems() {
@@ -39,8 +44,7 @@ public class DatabaseManager {
                 items.add(new MenuItem(itemId, price, name));
             }
 
-            connection.close();
-            statement.close();
+            closeDatabaseConnection(connection, statement);
 
             return items;
         } catch (SQLException e) {
@@ -48,5 +52,18 @@ public class DatabaseManager {
         }
     }
 
-    
+    public void addMenuItem(MenuItem mi){
+        Connection connection = createDatabaseConnection();
+
+        try {
+            String query = "INSERT INTO menu_item (price, name) VALUES ("+mi.getPrice()+mi.getName()+")";
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate(query);
+
+            closeDatabaseConnection(connection,statement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
