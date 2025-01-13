@@ -1,14 +1,38 @@
 package com.example.etterem;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
-public class HelloController {
-    @FXML
-    private Label welcomeText;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+public class HelloController implements Initializable {
+    public DatabaseManager dbManager = new DatabaseManager();
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private ListView menuListView;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        menuListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        ArrayList<MenuItem> dbResult = dbManager.getMenuItems();
+        ObservableList<String> items = FXCollections.observableArrayList();
+
+        for (MenuItem v:dbResult){
+            items.add(v.toString());
+        }
+
+        menuListView.setItems(items);
+
+        menuListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Handle the selected item here
+            System.out.println("Selected item: " + newValue);
+        });
     }
 }

@@ -11,24 +11,22 @@ public class DatabaseManager {
     private static final String username = "username";
     private static final String password = "password";
 
-    private Connection createDatabaseConnection() {
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            return connection;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+    private Connection createDatabaseConnection() throws SQLException {
+        Connection connection = DriverManager.getConnection(url, username, password);
+        System.out.println("connected to db");
+        return connection;
     }
 
     private void closeDatabaseConnection(Connection c, Statement s) throws SQLException {
+        System.out.println("dropping db connection");
         c.close();
         s.close();
     }
 
     public ArrayList<MenuItem> getMenuItems() {
-        Connection connection = createDatabaseConnection();
-
         try {
+            Connection connection = createDatabaseConnection();
+
             Statement statement = connection.createStatement();
 
             String query = "SELECT * FROM menu_item";
@@ -46,16 +44,18 @@ public class DatabaseManager {
 
             closeDatabaseConnection(connection, statement);
 
+            System.out.println("fetched menu items");
             return items;
         } catch (SQLException e) {
+            System.err.println(e);
             return null;
         }
     }
 
     public void addMenuItem(MenuItem mi){
-        Connection connection = createDatabaseConnection();
-
         try {
+            Connection connection = createDatabaseConnection();
+
             String query = "INSERT INTO menu_item (price, name) VALUES ("+mi.getPrice()+mi.getName()+")";
             Statement statement = connection.createStatement();
 

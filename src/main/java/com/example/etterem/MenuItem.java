@@ -22,4 +22,9 @@ public class MenuItem {
     public String getId() {
         return  this.id;
     }
+
+    @Override
+    public String toString(){
+        return this.getName()+": "+this.getPrice();
+    }
 }
