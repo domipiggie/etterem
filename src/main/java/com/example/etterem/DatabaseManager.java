@@ -56,7 +56,8 @@ public class DatabaseManager {
         try {
             Connection connection = createDatabaseConnection();
 
-            String query = "INSERT INTO menu_item (price, name) VALUES ("+mi.getPrice()+mi.getName()+")";
+            String query = "INSERT INTO menu_item (price, name) VALUES ("+mi.getPrice()+", \""+mi.getName()+"\")";
+            System.out.println(query);
             Statement statement = connection.createStatement();
 
             statement.executeUpdate(query);

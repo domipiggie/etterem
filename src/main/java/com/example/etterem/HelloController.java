@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 
@@ -13,9 +14,17 @@ import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
     public DatabaseManager dbManager = new DatabaseManager();
+    @FXML
+    public Button editMenuButton;
 
     @FXML
     private ListView menuListView;
+
+    @FXML
+    protected void onEditMenuButtonClick() throws Exception{
+        HelloApplication main = new HelloApplication();
+        main.changeScene("newMenuItem.fxml");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
