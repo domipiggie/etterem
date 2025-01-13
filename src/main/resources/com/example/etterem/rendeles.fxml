@@ -20,11 +20,6 @@
         <VBox alignment="TOP_CENTER" spacing="10.0">
             <Label text="Rendelések" />
             <TableView fx:id="ordersTable">
-                <columns>
-                    <TableColumn text="Asztal" />
-                    <TableColumn text="Rendelés" />
-                    <TableColumn text="Státusz" />
-                </columns>
             </TableView>
 
         </VBox>

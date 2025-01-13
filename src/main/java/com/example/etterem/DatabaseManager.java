@@ -57,12 +57,57 @@ public class DatabaseManager {
             Connection connection = createDatabaseConnection();
 
             String query = "INSERT INTO menu_item (price, name) VALUES ("+mi.getPrice()+", \""+mi.getName()+"\")";
-            System.out.println(query);
             Statement statement = connection.createStatement();
 
             statement.executeUpdate(query);
 
             closeDatabaseConnection(connection,statement);
+            System.out.println("inserted new item");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Order> getOrders(){
+        try {
+            Connection connection = createDatabaseConnection();
+
+            Statement statement = connection.createStatement();
+
+            String query = "SELECT * FROM orders";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            ArrayList<Order> orders = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String orderId = resultSet.getString("orderId");
+                String tableName = resultSet.getString("tableName");
+                int status = resultSet.getInt("status");
+
+                orders.add(new Order(orderId, tableName, status));
+            }
+
+            closeDatabaseConnection(connection, statement);
+
+            connection = createDatabaseConnection();
+            statement = connection.createStatement();
+
+
+            for (int i = 0; i< orders.size(); i++){
+                query = "SELECT `menu_item`.* FROM `menu_item` INNER JOIN `ordered_items` ON `menu_item`.`itemId` = `ordered_items`.`itemId` WHERE `ordered_items`.`orderId` = "+orders.get(i).getId()+";";
+                resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()){
+                    String itemId = resultSet.getString("itemId");
+                    int price = resultSet.getInt("price");
+                    String name = resultSet.getString("name");
+
+                    orders.get(i).addItemToOrder(new MenuItem(itemId, price, name));
+                }
+            }
+
+            System.out.println("fetched orders");
+            return orders;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

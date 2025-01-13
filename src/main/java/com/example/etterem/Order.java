@@ -6,12 +6,12 @@ public class Order {
     private String id;
     private String tableNumber;
     private ArrayList<MenuItem> orderedItems;
-    private String status;
+    private int status;
 
-    public Order(String id, String tableNumber, ArrayList<MenuItem> orderedItems, String status) {
+    public Order(String id, String tableNumber, int status) {
         this.id = id;
         this.tableNumber = tableNumber;
-        this.orderedItems = orderedItems;
+        this.orderedItems = new ArrayList<>();
         this.status = status;
     }
 
@@ -27,7 +27,11 @@ public class Order {
         return orderedItems;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
+    }
+
+    public void addItemToOrder(MenuItem mi) {
+        this.orderedItems.add(mi);
     }
 }
