@@ -21,7 +21,7 @@ public class NewMenuController {
         dbManager.addMenuItem(new MenuItem(null, Integer.parseInt(itemPrice.getText()), itemName.getText()));
 
         HelloApplication main = new HelloApplication();
-        main.changeScene("rendeles.fxml");
+        main.changeScene("menu.fxml");
     }
 
     public void onBackToMainClick() throws IOException {
