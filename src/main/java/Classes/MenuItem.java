@@ -25,6 +25,6 @@ public class MenuItem {
 
     @Override
     public String toString(){
-        return this.getName()+": "+this.getPrice();
+        return this.getName()+": "+this.getPrice()+"Ft";
     }
 }
