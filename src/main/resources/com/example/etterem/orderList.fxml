@@ -19,9 +19,18 @@
             </font></Label>
             <TableView fx:id="ordersTable">
             </TableView>
-         <Button fx:id="editMenuButton1" layoutX="105.0" layoutY="465.0" onAction="#onDeleteOrder" text="Rendelés törlése" />
-            <Button fx:id="editMenuButton" onAction="#onViewOrder" text="Rendelés részletei" />
-            <Button onAction="#onBackToMainClick" text="Vissza" />
+         <Button fx:id="editMenuButton1" layoutX="105.0" layoutY="465.0" onAction="#onDeleteOrder" prefWidth="300.0" style="-fx-background-color: #c41e12;" text="Rendelés törlése" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button fx:id="editMenuButton" onAction="#onViewOrder" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Rendelés részletei" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button onAction="#onBackToMainClick" prefWidth="300.0" text="Vissza">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
         </VBox>
 
     </HBox>

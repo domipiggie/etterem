@@ -33,8 +33,14 @@
                <Font size="18.0" />
             </font></Label>
             <ListView fx:id="menuListView" />
-            <Button onAction="#markAsCompletedClick" text="Megjelölés készként" />
-            <Button onAction="#onBackToMainClick" text="Vissza" />
+            <Button onAction="#markAsCompletedClick" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Megjelölés készként" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button onAction="#onBackToMainClick" prefWidth="300.0" text="Vissza">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
         </VBox>
     </HBox>
 </VBox>

@@ -16,9 +16,18 @@
             <font>
                <Font name="System Bold" size="38.0" />
             </font></Label>
-            <Button fx:id="createOrder" onAction="#createOrderClick" prefWidth="300.0" text="Rendelés leadása" />
-            <Button fx:id="viewOrders" onAction="#viewOrdersClick" prefWidth="300.0" text="Rendelések megtekintése" />
-            <Button fx:id="viewMenu" onAction="#viewMenuClick" prefWidth="300.0" text="Étlap megtekintése" />
+            <Button fx:id="createOrder" onAction="#createOrderClick" prefWidth="300.0" text="Rendelés leadása">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button fx:id="viewOrders" onAction="#viewOrdersClick" prefWidth="300.0" text="Rendelések megtekintése">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button fx:id="viewMenu" onAction="#viewMenuClick" prefWidth="300.0" text="Étlap megtekintése">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
         </VBox>
     </HBox>
 </VBox>

@@ -11,15 +11,24 @@
     </padding>
 
     <HBox alignment="TOP_CENTER" spacing="20.0">
-        <VBox alignment="TOP_CENTER" spacing="10.0">
+        <VBox alignment="TOP_CENTER" prefWidth="300.0" spacing="10.0">
             <Label text="Étlap">
             <font>
                <Font name="System Bold" size="24.0" />
             </font></Label>
             <ListView fx:id="menuListView" />
-         <Button mnemonicParsing="false" onAction="#deleteItem" text="Kiválasztott étel törlése" />
-         <Button mnemonicParsing="false" onAction="#addItem" text="Étel hozzáadása" />
-            <Button onAction="#onBackToMainClick" text="Vissza" />
+         <Button mnemonicParsing="false" onAction="#deleteItem" prefWidth="300.0" style="-fx-background-color: #c41e12;" text="Kiválasztott étel törlése" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+         <Button mnemonicParsing="false" onAction="#addItem" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Étel hozzáadása" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button onAction="#onBackToMainClick" prefWidth="300.0" text="Vissza">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
         </VBox>
     </HBox>
 </VBox>
