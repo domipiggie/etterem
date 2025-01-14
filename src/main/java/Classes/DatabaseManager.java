@@ -173,6 +173,21 @@ public class DatabaseManager {
         }
     }
 
+    public void removeOrder(String id){
+        try{
+            Connection connection = createDatabaseConnection();
+            Statement statement = connection.createStatement();
+
+            String query = "DELETE orders, ordered_items FROM orders JOIN ordered_items ON orders.orderId = ordered_items.orderId WHERE orders.orderId = "+id;
+
+            statement.executeUpdate(query);
+
+            closeDatabaseConnection(connection, statement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Order getOrder(String id){
         try{
             Connection connection = createDatabaseConnection();

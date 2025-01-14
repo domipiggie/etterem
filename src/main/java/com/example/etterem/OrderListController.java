@@ -4,6 +4,7 @@ import Classes.DatabaseManager;
 import Classes.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -43,6 +44,16 @@ public class OrderListController implements Initializable {
         }
     }
 
+    public void redraw(){
+        ordersTable.getItems().clear();
+
+        ArrayList<Order> dbOrders = dbManager.getOrders();
+
+        for (Order v: dbOrders){
+            ordersTable.getItems().add(v);
+        }
+    }
+
     public void onViewOrder() throws IOException {
         HelloApplication main = new HelloApplication();
         main.changeScene("order.fxml", ordersTable.getSelectionModel().getSelectedItem().toString());
@@ -51,5 +62,10 @@ public class OrderListController implements Initializable {
     public void onBackToMainClick() throws IOException {
         HelloApplication main = new HelloApplication();
         main.changeScene("mainMenu.fxml");
+    }
+
+    public void onDeleteOrder() {
+        dbManager.removeOrder(ordersTable.getSelectionModel().getSelectedItem().toString());
+        redraw();
     }
 }
