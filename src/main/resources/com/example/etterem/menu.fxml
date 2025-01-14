@@ -13,6 +13,7 @@
         <VBox alignment="TOP_CENTER" spacing="10.0">
             <Label text="Étlap" />
             <ListView fx:id="menuListView" />
+         <Button mnemonicParsing="false" onAction="#addItem" text="Étel hozzáadása" />
             <Button onAction="#onBackToMainClick" text="Vissza" />
         </VBox>
     </HBox>

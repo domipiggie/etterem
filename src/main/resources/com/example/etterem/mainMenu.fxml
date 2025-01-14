@@ -15,7 +15,6 @@
             <Button fx:id="createOrder" onAction="#createOrderClick" text="Rendelés leadása" />
             <Button fx:id="viewOrders" onAction="#viewOrdersClick" text="Rendelések megtekintése" />
             <Button fx:id="viewMenu" onAction="#viewMenuClick" text="Étlap megtekintése" />
-            <Button fx:id="addItem" onAction="#addItemClick" text="Étel hozzáadása" />
         </VBox>
     </HBox>
 </VBox>

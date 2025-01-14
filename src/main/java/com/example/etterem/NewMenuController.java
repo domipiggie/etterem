@@ -1,18 +1,11 @@
 package com.example.etterem;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import Classes.DatabaseManager;
+import Classes.MenuItem;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class NewMenuController {
     public DatabaseManager dbManager = new DatabaseManager();
@@ -33,6 +26,6 @@ public class NewMenuController {
 
     public void onBackToMainClick() throws IOException {
         HelloApplication main = new HelloApplication();
-        main.changeScene("mainMenu.fxml");
+        main.changeScene("menu.fxml");
     }
 }

@@ -1,8 +1,9 @@
 package com.example.etterem;
 
-import javafx.collections.FXCollections;
+import Classes.DatabaseManager;
+import Classes.MenuItem;
+import Classes.Order;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -25,7 +26,7 @@ public class HelloController implements Initializable {
         //Initialize menu view
         menuListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         menuListView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        ArrayList<MenuItem> dbOrders = dbManager.getMenuItems();
+        ArrayList<Classes.MenuItem> dbOrders = dbManager.getMenuItems();
 
         TableColumn idColumn = new TableColumn("Id");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -38,13 +39,13 @@ public class HelloController implements Initializable {
 
         menuListView.getColumns().addAll(idColumn, asztalColumn, statusColumn);
 
-        for (MenuItem v: dbOrders){
+        for (Classes.MenuItem v: dbOrders){
             menuListView.getItems().add(v);
         }
     }
 
     public void onPlaceOrderClick() throws IOException {
-        ObservableList<MenuItem> items = menuListView.getSelectionModel().getSelectedItems();
+        ObservableList<Classes.MenuItem> items = menuListView.getSelectionModel().getSelectedItems();
         System.out.println(tableNumber.getText());
         Order order = new Order("-100", tableNumber.getText(), 0);
 

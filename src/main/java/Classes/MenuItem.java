@@ -1,4 +1,4 @@
-package com.example.etterem;
+package Classes;
 
 public class MenuItem {
     private String id;

@@ -1,4 +1,6 @@
-package com.example.etterem;
+package Classes;
+
+import Classes.MenuItem;
 
 import java.util.ArrayList;
 

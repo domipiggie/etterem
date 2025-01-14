@@ -33,10 +33,4 @@ public class MainMenuController {
         HelloApplication main = new HelloApplication();
         main.changeScene("menu.fxml");
     }
-
-    @FXML
-    protected void addItemClick() throws IOException {
-        HelloApplication main = new HelloApplication();
-        main.changeScene("newMenuItem.fxml");
-    }
 }

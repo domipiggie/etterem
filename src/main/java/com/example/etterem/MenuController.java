@@ -1,12 +1,13 @@
 package com.example.etterem;
 
+import Classes.DatabaseManager;
+import Classes.MenuItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +22,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initialize menu view
-        ArrayList<MenuItem> dbItems = dbManager.getMenuItems();
+        ArrayList<Classes.MenuItem> dbItems = dbManager.getMenuItems();
         ObservableList<String> items = FXCollections.observableArrayList();
 
         for (MenuItem v:dbItems){
@@ -34,5 +35,10 @@ public class MenuController implements Initializable {
     public void onBackToMainClick() throws IOException {
         HelloApplication main = new HelloApplication();
         main.changeScene("mainMenu.fxml");
+    }
+
+    public void addItem() throws IOException {
+        HelloApplication main = new HelloApplication();
+        main.changeScene("newMenuItem.fxml");
     }
 }
