@@ -5,6 +5,7 @@ import Classes.MenuItem;
 import java.util.ArrayList;
 
 public class Order {
+    private String[] statusStrings = new String[]{"Feldolgozás","Készül","Kész"};
     private String id;
     private String tableNumber;
     private ArrayList<MenuItem> orderedItems;
@@ -31,6 +32,10 @@ public class Order {
 
     public int getStatus() {
         return status;
+    }
+
+    public String getStatusString(){
+        return statusStrings[this.getStatus()];
     }
 
     public String toString(){

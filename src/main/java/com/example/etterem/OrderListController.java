@@ -34,7 +34,7 @@ public class OrderListController implements Initializable {
         asztalColumn.setCellValueFactory(new PropertyValueFactory<>("tableNumber"));
 
         TableColumn statusColumn = new TableColumn("Státusz");
-        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("statusString"));
 
         ordersTable.getColumns().addAll(idColumn, asztalColumn, statusColumn);
 

@@ -18,7 +18,7 @@ public class OrderController {
 
     @FXML
     public ChoiceBox selectedStatus;
-    private String[] statusStrings = new String[]{"Feldolgozás alatt","Készül","Kész"};
+    private String[] statusStrings = new String[]{"Feldolgozás","Készül","Kész"};
     @FXML
     public Label table;
     @FXML
@@ -62,7 +62,7 @@ public class OrderController {
 
         priceText.setText("Összesített ár: "+Integer.toString(price));
         table.setText("Asztal: "+o.getTableNumber());
-        status.setText("Státusz: "+statusStrings[o.getStatus()]);
+        status.setText("Státusz: "+o.getStatusString());
     }
 
     public void markAsCompletedClick() {
