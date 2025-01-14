@@ -25,7 +25,6 @@ public class OrderListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ordersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        ObservableList<String> orders = FXCollections.observableArrayList();
         ArrayList<Order> dbOrders = dbManager.getOrders();
 
         TableColumn idColumn = new TableColumn("Id");

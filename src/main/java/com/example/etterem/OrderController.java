@@ -56,7 +56,7 @@ public class OrderController {
 
         priceText.setText("Összesített ár: "+Integer.toString(price));
         table.setText("Asztal: "+o.getTableNumber());
-        status.setText("Státusz: "+o.getStatus());
+        status.setText("Státusz: "+(o.getStatus()==1?"Kész":"Folyamatban"));
     }
 
     public void markAsCompletedClick() {
