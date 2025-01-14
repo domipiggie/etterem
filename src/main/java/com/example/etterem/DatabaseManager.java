@@ -127,4 +127,28 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
     }
+
+    public void addOrder(Order o){
+        try{
+            Connection connection = createDatabaseConnection();
+            Statement statement = connection.createStatement();
+
+            String query = "INSERT INTO orders (tableName,status) VALUES (\""+o.getTableNumber()+"\", "+o.getStatus()+");";
+            statement.executeUpdate(query);
+
+            query = "SELECT orderId FROM orders WHERE tableName = \""+o.getTableNumber()+"\" AND status = "+o.getStatus()+" ORDER BY orderId DESC";
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            String orderId = resultSet.getString("orderId");
+
+            for (MenuItem mi:o.getOrderedItems()){
+                query = "INSERT INTO ordered_items (orderId, itemId) VALUES ("+orderId+", "+mi.getId()+");";
+                statement.executeUpdate(query);
+            }
+
+            closeDatabaseConnection(connection,statement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

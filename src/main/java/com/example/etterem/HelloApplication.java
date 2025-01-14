@@ -22,8 +22,10 @@ public class HelloApplication extends Application {
     }
 
     public void changeScene(String view) throws IOException{
-        Parent pane = FXMLLoader.load(getClass().getResource(view));
-        stg.getScene().setRoot(pane);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(view));
+        Parent root = loader.load();
+
+        stg.setScene(new Scene(root));
     }
 
     public void changeScene(String view, String pass) throws IOException {

@@ -20,7 +20,7 @@ public class OrderController {
     public ListView menuListView;
     public void onBackToMainClick() throws IOException {
         HelloApplication main = new HelloApplication();
-        main.changeScene("mainMenu.fxml");
+        main.changeScene("orderList.fxml");
     }
 
     public void initData(String s){

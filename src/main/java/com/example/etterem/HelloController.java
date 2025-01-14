@@ -16,22 +16,40 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
     public DatabaseManager dbManager = new DatabaseManager();
     @FXML
-    private ListView menuListView;
+    private TableView menuListView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initialize menu view
-        ArrayList<MenuItem> dbItems = dbManager.getMenuItems();
-        ObservableList<String> items = FXCollections.observableArrayList();
+        menuListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        menuListView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        ArrayList<MenuItem> dbOrders = dbManager.getMenuItems();
 
-        for (MenuItem v:dbItems){
-            items.add(v.toString());
+        TableColumn idColumn = new TableColumn("Id");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn asztalColumn = new TableColumn("Név");
+        asztalColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn statusColumn = new TableColumn("Ár");
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        menuListView.getColumns().addAll(idColumn, asztalColumn, statusColumn);
+
+        for (MenuItem v: dbOrders){
+            menuListView.getItems().add(v);
         }
-
-        menuListView.setItems(items);
     }
 
-    public void onPlaceOrderClick(ActionEvent actionEvent) {
+    public void onPlaceOrderClick() {
+        ObservableList<MenuItem> items = menuListView.getSelectionModel().getSelectedItems();
+        Order order = new Order("-100", "10", 0);
+
+        for (MenuItem mi:items){
+            order.addItemToOrder(mi);
+        }
+
+        dbManager.addOrder(order);
     }
 
     public void onBackToMainClick() throws IOException {
