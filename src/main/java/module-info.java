@@ -6,4 +6,6 @@ module com.example.etterem {
 
     opens com.example.etterem to javafx.fxml;
     exports com.example.etterem;
+    exports Classes;
+    opens Classes to javafx.fxml;
 }

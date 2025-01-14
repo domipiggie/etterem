@@ -1,8 +1,9 @@
 package com.example.etterem;
 
+import Classes.DatabaseManager;
+import Classes.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
