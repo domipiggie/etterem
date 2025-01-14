@@ -33,7 +33,8 @@
                <Font size="18.0" />
             </font></Label>
             <ListView fx:id="menuListView" />
-            <Button onAction="#markAsCompletedClick" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Megjelölés készként" textFill="WHITE">
+         <ChoiceBox fx:id="selectedStatus" prefWidth="300.0" />
+            <Button onAction="#markAsCompletedClick" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Státusz beállítása" textFill="WHITE">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Button>

@@ -6,6 +6,7 @@ import Classes.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
@@ -14,6 +15,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class OrderController {
+
+    @FXML
+    public ChoiceBox selectedStatus;
+    private String[] statusStrings = new String[]{"Feldolgozás alatt","Készül","Kész"};
     @FXML
     public Label table;
     @FXML
@@ -30,6 +35,7 @@ public class OrderController {
     }
 
     public void initData(String s){
+        selectedStatus.getItems().addAll(statusStrings);
         System.out.println(s);
         id = s;
         ArrayList<Order> orders = dbManager.getOrders();
@@ -56,10 +62,10 @@ public class OrderController {
 
         priceText.setText("Összesített ár: "+Integer.toString(price));
         table.setText("Asztal: "+o.getTableNumber());
-        status.setText("Státusz: "+(o.getStatus()==1?"Kész":"Folyamatban"));
+        status.setText("Státusz: "+statusStrings[o.getStatus()]);
     }
 
     public void markAsCompletedClick() {
-        dbManager.updateOrderStatus(id, "1");
+        dbManager.updateOrderStatus(id, String.valueOf(selectedStatus.getSelectionModel().getSelectedIndex()));
     }
 }
