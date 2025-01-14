@@ -27,8 +27,8 @@ public class OrderListController implements Initializable {
         ordersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         ArrayList<Order> dbOrders = dbManager.getOrders();
 
-        TableColumn idColumn = new TableColumn("Id");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        /*TableColumn idColumn = new TableColumn("Id");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));*/
 
         TableColumn asztalColumn = new TableColumn("Asztal");
         asztalColumn.setCellValueFactory(new PropertyValueFactory<>("tableNumber"));
@@ -36,7 +36,7 @@ public class OrderListController implements Initializable {
         TableColumn statusColumn = new TableColumn("Státusz");
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("statusString"));
 
-        ordersTable.getColumns().addAll(idColumn, asztalColumn, statusColumn);
+        ordersTable.getColumns().addAll(/*idColumn, */asztalColumn, statusColumn);
 
         for (Order v: dbOrders){
             ordersTable.getItems().add(v);

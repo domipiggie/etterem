@@ -60,7 +60,7 @@ public class OrderController {
 
         o = dbManager.getOrder(s);
 
-        priceText.setText("Összesített ár: "+Integer.toString(price));
+        priceText.setText("Összesített ár: "+Integer.toString(price)+"Ft");
         table.setText("Asztal: "+o.getTableNumber());
         status.setText("Státusz: "+o.getStatusString());
     }

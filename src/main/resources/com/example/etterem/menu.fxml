@@ -16,7 +16,8 @@
             <font>
                <Font name="System Bold" size="24.0" />
             </font></Label>
-            <ListView fx:id="menuListView" />
+            <TableView fx:id="menuListView">
+            </TableView>
          <Button mnemonicParsing="false" onAction="#deleteItem" prefWidth="300.0" style="-fx-background-color: #c41e12;" text="Kiválasztott étel törlése" textFill="WHITE">
             <font>
                <Font name="System Bold" size="14.0" />

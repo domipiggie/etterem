@@ -28,8 +28,8 @@ public class HelloController implements Initializable {
         menuListView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         ArrayList<Classes.MenuItem> dbOrders = dbManager.getMenuItems();
 
-        TableColumn idColumn = new TableColumn("Id");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        /*TableColumn idColumn = new TableColumn("Id");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));*/
 
         TableColumn asztalColumn = new TableColumn("Név");
         asztalColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -37,7 +37,7 @@ public class HelloController implements Initializable {
         TableColumn statusColumn = new TableColumn("Ár");
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        menuListView.getColumns().addAll(idColumn, asztalColumn, statusColumn);
+        menuListView.getColumns().addAll(/*idColumn, */asztalColumn, statusColumn);
 
         for (Classes.MenuItem v: dbOrders){
             menuListView.getItems().add(v);
