@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
     public DatabaseManager dbManager = new DatabaseManager();
     @FXML
+    public TextField tableNumber;
+    @FXML
     private TableView menuListView;
 
     @Override
@@ -41,15 +43,18 @@ public class HelloController implements Initializable {
         }
     }
 
-    public void onPlaceOrderClick() {
+    public void onPlaceOrderClick() throws IOException {
         ObservableList<MenuItem> items = menuListView.getSelectionModel().getSelectedItems();
-        Order order = new Order("-100", "10", 0);
+        System.out.println(tableNumber.getText());
+        Order order = new Order("-100", tableNumber.getText(), 0);
 
         for (MenuItem mi:items){
             order.addItemToOrder(mi);
         }
 
         dbManager.addOrder(order);
+        HelloApplication main = new HelloApplication();
+        main.changeScene("mainMenu.fxml");
     }
 
     public void onBackToMainClick() throws IOException {

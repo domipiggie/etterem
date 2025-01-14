@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.io.IOException;
@@ -14,6 +15,12 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class OrderController {
+    @FXML
+    public Label table;
+    @FXML
+    public Label status;
+    @FXML
+    public Label priceText;
     private DatabaseManager dbManager = new DatabaseManager();
     private String id;
     @FXML
@@ -38,11 +45,19 @@ public class OrderController {
 
         ObservableList<String> items = FXCollections.observableArrayList();
 
+        int price = 0;
         for (MenuItem v:o.getOrderedItems()){
             items.add(v.toString());
+            price+=v.getPrice();
         }
 
         menuListView.setItems(items);
+
+        o = dbManager.getOrder(s);
+
+        priceText.setText("Összesített ár: "+Integer.toString(price));
+        table.setText("Asztal: "+o.getTableNumber());
+        status.setText("Státusz: "+o.getStatus());
     }
 
     public void markAsCompletedClick() {

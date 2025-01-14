@@ -151,4 +151,19 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
     }
+
+    public Order getOrder(String id){
+        try{
+            Connection connection = createDatabaseConnection();
+            Statement statement = connection.createStatement();
+
+            String query = "SELECT * FROM orders WHERE orderId = "+id;
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            Order o = new Order(resultSet.getString("orderId"),resultSet.getString("tableName"),resultSet.getInt("status"));
+            return o;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
