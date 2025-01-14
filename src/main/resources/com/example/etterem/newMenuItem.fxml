@@ -22,8 +22,14 @@
                   <Font name="System Bold" size="24.0" />
                </font></Label>
             <TextField fx:id="itemPrice" />
-            <Button mnemonicParsing="false" onAction="#onAddItemClick" text="Étel hozzáadása" />
-             <Button onAction="#onBackToMainClick" text="Vissza" />
+            <Button mnemonicParsing="false" onAction="#onAddItemClick" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Étel hozzáadása" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+             <Button onAction="#onBackToMainClick" prefWidth="300.0" text="Vissza">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>

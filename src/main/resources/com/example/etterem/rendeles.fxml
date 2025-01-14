@@ -23,8 +23,14 @@
                <Font size="18.0" />
             </font></Label>
          <TextField fx:id="tableNumber" />
-            <Button onAction="#onPlaceOrderClick" text="Rendelés leadása" />
-            <Button onAction="#onBackToMainClick" text="Vissza" />
+            <Button onAction="#onPlaceOrderClick" prefWidth="300.0" style="-fx-background-color: #12c432;" text="Rendelés leadása" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
+            <Button onAction="#onBackToMainClick" prefWidth="300.0" text="Vissza">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Button>
         </VBox>
     </HBox>
 </VBox>
