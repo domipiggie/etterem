@@ -4,17 +4,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.etterem.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.etterem.OrderListController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <HBox spacing="20.0">
+
         <VBox alignment="TOP_CENTER" spacing="10.0">
-            <Label text="Étlap" />
-            <ListView fx:id="menuListView" />
-            <Button onAction="#onPlaceOrderClick" text="Rendelés leadása" />
+            <Label text="Rendelések" />
+            <TableView fx:id="ordersTable">
+            </TableView>
+            <Button fx:id="editMenuButton" onAction="#onViewOrder" text="Rendelés részletei" />
             <Button onAction="#onBackToMainClick" text="Vissza" />
         </VBox>
+
     </HBox>
 </VBox>

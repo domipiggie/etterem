@@ -14,5 +14,6 @@
       <Label text="Ár" />
       <TextField fx:id="itemPrice"/>
       <Button mnemonicParsing="false" text="Étel hozzáadása" onAction="#onAddItemClick"/>
+       <Button onAction="#onBackToMainClick" text="Vissza" />
    </children>
 </VBox>

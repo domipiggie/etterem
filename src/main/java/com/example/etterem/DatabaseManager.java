@@ -112,4 +112,19 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
     }
+
+    public void updateOrderStatus(String id, String status){
+        try{
+            Connection connection = createDatabaseConnection();
+            Statement statement = connection.createStatement();
+
+            String query = "UPDATE orders SET status = "+status+" WHERE orderId = "+id+";";
+
+            statement.executeUpdate(query);
+
+            closeDatabaseConnection(connection, statement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

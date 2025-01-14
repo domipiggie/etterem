@@ -31,6 +31,10 @@ public class Order {
         return status;
     }
 
+    public String toString(){
+        return this.getId();
+    }
+
     public void addItemToOrder(MenuItem mi) {
         this.orderedItems.add(mi);
     }
