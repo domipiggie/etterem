@@ -3,18 +3,22 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="275.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.etterem.MainMenuController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.etterem.MainMenuController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <HBox spacing="20.0">
+    <HBox alignment="CENTER" spacing="20.0">
         <VBox alignment="TOP_CENTER" spacing="10.0">
-            <Label text="Étterem kezelő" />
-            <Button fx:id="createOrder" onAction="#createOrderClick" text="Rendelés leadása" />
-            <Button fx:id="viewOrders" onAction="#viewOrdersClick" text="Rendelések megtekintése" />
-            <Button fx:id="viewMenu" onAction="#viewMenuClick" text="Étlap megtekintése" />
+            <Label text="Étterem kezelő">
+            <font>
+               <Font name="System Bold" size="38.0" />
+            </font></Label>
+            <Button fx:id="createOrder" onAction="#createOrderClick" prefWidth="300.0" text="Rendelés leadása" />
+            <Button fx:id="viewOrders" onAction="#viewOrdersClick" prefWidth="300.0" text="Rendelések megtekintése" />
+            <Button fx:id="viewMenu" onAction="#viewMenuClick" prefWidth="300.0" text="Étlap megtekintése" />
         </VBox>
     </HBox>
 </VBox>

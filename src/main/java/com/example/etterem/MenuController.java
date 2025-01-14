@@ -18,11 +18,16 @@ public class MenuController implements Initializable {
     public DatabaseManager dbManager = new DatabaseManager();
     @FXML
     private ListView menuListView;
+    private ArrayList<Classes.MenuItem> dbItems;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        reloadTable();
+    }
+
+    public void reloadTable(){
         //Initialize menu view
-        ArrayList<Classes.MenuItem> dbItems = dbManager.getMenuItems();
+        dbItems = dbManager.getMenuItems();
         ObservableList<String> items = FXCollections.observableArrayList();
 
         for (MenuItem v:dbItems){
@@ -40,5 +45,10 @@ public class MenuController implements Initializable {
     public void addItem() throws IOException {
         HelloApplication main = new HelloApplication();
         main.changeScene("newMenuItem.fxml");
+    }
+
+    public void deleteItem() {
+        dbManager.removeMenuItem(dbItems.get(menuListView.getSelectionModel().getSelectedIndex()).getId());
+        reloadTable();
     }
 }

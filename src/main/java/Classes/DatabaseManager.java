@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.scene.control.Menu;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -64,6 +66,24 @@ public class DatabaseManager {
 
             closeDatabaseConnection(connection,statement);
             System.out.println("inserted new item");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void removeMenuItem(MenuItem mi){
+        removeMenuItem(mi.getId());
+    }
+    public void removeMenuItem(String id){
+        try{
+            Connection connection = createDatabaseConnection();
+            Statement statement = connection.createStatement();
+
+            String query = "DELETE FROM menu_item WHERE itemId = "+id;
+
+            statement.executeUpdate(query);
+
+            closeDatabaseConnection(connection, statement);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
