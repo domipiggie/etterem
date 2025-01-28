@@ -19,7 +19,7 @@ public class MenuController implements Initializable {
     public DatabaseManager dbManager = new DatabaseManager();
     @FXML
     private TableView menuListView;
-    private ArrayList<Classes.MenuItem> dbItems;
+    private ArrayList<Classes.MenuItem> dbOrders;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,7 +42,7 @@ public class MenuController implements Initializable {
 
     public void reloadTable(){
         //Initialize menu view
-        ArrayList<Classes.MenuItem> dbOrders = dbManager.getMenuItems();
+        dbOrders = dbManager.getMenuItems();
         menuListView.getItems().clear();
         for (Classes.MenuItem v: dbOrders){
             menuListView.getItems().add(v);
@@ -60,7 +60,8 @@ public class MenuController implements Initializable {
     }
 
     public void deleteItem() {
-        dbManager.removeMenuItem(dbItems.get(menuListView.getSelectionModel().getSelectedIndex()).getId());
+        System.out.println();
+        dbManager.removeMenuItem(dbOrders.get(menuListView.getSelectionModel().getSelectedIndex()).getId());
         reloadTable();
     }
 }
